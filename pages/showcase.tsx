@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import NextImage from 'next/image';
 import React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css, keyframes } from 'styled-components';
@@ -65,11 +66,18 @@ export default function Showcase() {
                 height={1080}
                 src={src}
                 margin={0}
-                renderImage={(props: Parameters<ImageProps['renderImage']>[0]) => {
+                renderImage={(props: Parameters<NonNullable<ImageProps['renderImage']>>[0]) => {
                   return (
                     <TransitionGroup>
                       <CSSTransition key={src} timeout={500} classNames="fade">
-                        <img {...props} />
+                        <NextImage
+                          src={props.src}
+                          alt={title}
+                          layout="fill"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                          priority
+                          objectFit="cover"
+                        />
                       </CSSTransition>
                     </TransitionGroup>
                   );

@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NextPage renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -38,24 +39,23 @@ exports[`NextPage renders correctly 1`] = `
 }
 
 <a
-  className="c0"
->
-  <div>
-    <h3
-      className="c1"
-    >
-      Continue on the next page
-    </h3>
-    <h2
-      className="c2"
-    >
-      
-    </h2>
-  </div>
-  <div>
-    <svg
-      className="c3"
-    />
-  </div>
-</a>
+    class="c0"
+  >
+    <div>
+      <h3
+        class="c1"
+      >
+        Continue on the next page
+      </h3>
+      <h2
+        class="c2"
+      />
+    </div>
+    <div>
+      <svg
+        class="c3"
+      />
+    </div>
+  </a>
+</DocumentFragment>
 `;

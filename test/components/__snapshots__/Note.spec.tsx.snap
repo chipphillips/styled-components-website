@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Note renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   font-family: "Karla",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   background: #e0e0e0;
   padding: 0.3888888888888889rem 0.5555555555555556rem 0.2777777777777778rem 0.7777777777777778rem;
@@ -14,8 +15,8 @@ exports[`Note renders correctly 1`] = `
   margin: 0 0 0.2777777777777778rem 0;
 }
 
-.sc-eDDNPB+.c0,
-.sc-dmqGxT+.c0 {
+.sc-eDLJxb+.c0,
+.sc-dmyDGl+.c0 {
   margin-top: 1.9444444444444444rem;
 }
 
@@ -29,12 +30,13 @@ exports[`Note renders correctly 1`] = `
 }
 
 <div
-  className="c0"
->
-  <strong
-    className="c1"
+    class="c0"
   >
-    Note
-  </strong>
-</div>
+    <strong
+      class="c1"
+    >
+      Note
+    </strong>
+  </div>
+</DocumentFragment>
 `;

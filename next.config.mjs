@@ -1,5 +1,5 @@
 import withMDX from '@next/mdx';
-import remarkPlugin from 'remark-gfm'
+import remarkPlugin from 'remark-gfm';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 export default withMDX({
@@ -14,7 +14,22 @@ export default withMDX({
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   poweredByHeader: false,
-  productionBrowserSourceMaps: true,
+
+  // Image optimization configuration
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+
+  // Bundle optimization
+  swcMinify: true,
+
+  // Experimental features for better performance
+  experimental: {
+    optimizePackageImports: ['@styled-icons/boxicons-regular', '@styled-icons/fa-brands', '@styled-icons/material'],
+  },
+
   webpack: function (config, { dev, isServer }) {
     if (dev) {
       return config;
@@ -24,9 +39,7 @@ export default withMDX({
       config.plugins.push(
         new BundleAnalyzerPlugin({
           analyzerMode: 'disabled',
-          // For all options see https://github.com/th0r/webpack-bundle-analyzer#as-plugin
           generateStatsFile: true,
-          // Will be available at `.next/stats.json`
           statsFilename: 'stats.json',
         })
       );

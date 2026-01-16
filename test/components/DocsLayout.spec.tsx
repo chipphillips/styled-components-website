@@ -1,9 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import DocsLayout from '../../components/DocsLayout';
 
 test('DocsLayout renders correctly', () => {
-  const wrapper = mount(<DocsLayout />);
+  const { asFragment } = render(<DocsLayout />);
 
-  expect(wrapper).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

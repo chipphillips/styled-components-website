@@ -1,19 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { LiveProvider } from 'react-live-runner';
 import LiveEdit, { StyledError } from '../../components/LiveEdit';
 
 test('LiveEdit renders correctly', () => {
-  const wrapper = mount(<LiveEdit />);
+  const { asFragment } = render(<LiveEdit />);
 
-  expect(wrapper).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('StyledError renders correctly', () => {
-  const tree = mount(<StyledError />, {
-    context: { live: {} },
-    childContextTypes: { live: PropTypes.object },
-  });
+  const { asFragment } = render(
+    <LiveProvider code="">
+      <StyledError />
+    </LiveProvider>
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

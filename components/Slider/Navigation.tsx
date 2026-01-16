@@ -1,4 +1,5 @@
 import React from 'react';
+import NextImage from 'next/image';
 import styled, { css } from 'styled-components';
 import { NavigateNext, NavigateBefore } from '@styled-icons/material';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -26,7 +27,14 @@ export default function Navigation({ prev, next }: NavigationProps) {
               return (
                 <TransitionGroup>
                   <CSSTransition key={props.src} timeout={100} classNames="fade">
-                    <img src={prev.src} />
+                    <NextImage
+                      src={prev.src}
+                      alt={prev.title}
+                      layout="fill"
+                      sizes="192px"
+                      loading="lazy"
+                      objectFit="cover"
+                    />
                   </CSSTransition>
                 </TransitionGroup>
               );
@@ -47,7 +55,14 @@ export default function Navigation({ prev, next }: NavigationProps) {
               return (
                 <TransitionGroup>
                   <CSSTransition key={props.src} timeout={100} classNames="fade">
-                    <img src={next.src} />
+                    <NextImage
+                      src={next.src}
+                      alt={next.title}
+                      layout="fill"
+                      sizes="192px"
+                      loading="lazy"
+                      objectFit="cover"
+                    />
                   </CSSTransition>
                 </TransitionGroup>
               );
