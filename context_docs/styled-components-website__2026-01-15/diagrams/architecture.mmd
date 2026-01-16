@@ -1,0 +1,79 @@
+%% Architecture Diagram
+%% styled-components-website
+
+graph TB
+    subgraph "Hosting Layer"
+        VERCEL[Vercel CDN]
+    end
+
+    subgraph "Application Layer"
+        NEXTJS[Next.js 12]
+
+        subgraph "Pages"
+            HOME[Homepage]
+            DOCS[Documentation]
+            SHOWCASE[Showcase]
+            ECOSYSTEM[Ecosystem]
+            RELEASES[Releases]
+        end
+
+        subgraph "Components"
+            NAV[Navigation]
+            LAYOUT[Layout]
+            LIVEEDIT[LiveEdit]
+            CODEBLOCK[CodeBlock]
+            SEOH[SeoHead]
+        end
+
+        subgraph "Utils"
+            COLORS[Colors]
+            MEDIA[Media]
+            MDX_COMP[MDX Components]
+            GITHUB_API[GitHub API]
+        end
+    end
+
+    subgraph "Content Layer"
+        MDX[MDX Files]
+        DOCS_JSON[docs.json]
+        COMPANY_DATA[Companies Manifest]
+    end
+
+    subgraph "External Services"
+        GITHUB[GitHub API]
+        ALGOLIA[Algolia DocSearch]
+    end
+
+    %% Relationships
+    VERCEL --> NEXTJS
+    NEXTJS --> HOME
+    NEXTJS --> DOCS
+    NEXTJS --> SHOWCASE
+    NEXTJS --> ECOSYSTEM
+    NEXTJS --> RELEASES
+
+    DOCS --> MDX
+    DOCS --> DOCS_JSON
+
+    HOME --> COMPANY_DATA
+    HOME --> LIVEEDIT
+
+    RELEASES --> GITHUB_API
+    GITHUB_API --> GITHUB
+
+    NAV --> ALGOLIA
+
+    LAYOUT --> COLORS
+    LAYOUT --> MEDIA
+
+    DOCS --> MDX_COMP
+    MDX_COMP --> CODEBLOCK
+    MDX_COMP --> LIVEEDIT
+
+    classDef external fill:#f9f,stroke:#333
+    classDef component fill:#bbf,stroke:#333
+    classDef content fill:#bfb,stroke:#333
+
+    class GITHUB,ALGOLIA external
+    class NAV,LAYOUT,LIVEEDIT,CODEBLOCK,SEOH component
+    class MDX,DOCS_JSON,COMPANY_DATA content

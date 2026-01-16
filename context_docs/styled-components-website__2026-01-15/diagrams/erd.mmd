@@ -1,0 +1,78 @@
+%% Entity Relationship Diagram
+%% styled-components-website
+%% Note: This is a static site with no database
+%% Diagram shows data structure relationships
+
+erDiagram
+    DocsConfig ||--o{ DocsPage : contains
+    DocsPage ||--o{ DocsSection : contains
+
+    DocsConfig {
+        array pages
+    }
+
+    DocsPage {
+        string title
+        string pathname
+        array sections
+    }
+
+    DocsSection {
+        string title
+        string pathname
+    }
+
+    MDXFile ||--o| DocsSection : represents
+    MDXFile {
+        string content
+        string path
+        object frontmatter
+    }
+
+    CompaniesManifest ||--o{ Company : contains
+    CompaniesManifest {
+        array companies
+    }
+
+    Company {
+        string name
+        string logo
+        string url
+    }
+
+    NavProps ||--o{ DocsPage : references
+    NavProps {
+        boolean useDocsSidebarMenu
+        boolean isSideFolded
+        boolean isMobileNavFolded
+    }
+
+    DocsLayoutProps ||--|| NavProps : uses
+    DocsLayoutProps {
+        string title
+        string description
+        boolean useDocsSidebarMenu
+    }
+
+    GitHubRelease {
+        string tag_name
+        string name
+        string body
+        datetime published_at
+        string html_url
+    }
+
+    ColorToken {
+        string name
+        string value
+        string usage
+    }
+
+    MediaBreakpoint {
+        string name
+        string width
+        string helper_fn
+    }
+
+    %% Note: GitHubRelease is fetched from external API
+    %% ColorToken and MediaBreakpoint are design tokens in utils/

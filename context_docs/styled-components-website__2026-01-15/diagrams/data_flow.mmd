@@ -1,0 +1,71 @@
+%% Data Flow Diagram
+%% styled-components-website
+
+flowchart LR
+    subgraph "Build Time"
+        MDX_FILES[MDX Files]
+        DOCS_JSON[docs.json]
+        MDX_LOADER[MDX Loader]
+        NEXT_BUILD[Next.js Build]
+        STATIC_HTML[Static HTML/JS]
+    end
+
+    subgraph "Runtime - Page Load"
+        BROWSER[Browser]
+        VERCEL[Vercel CDN]
+        HYDRATION[React Hydration]
+        PAGE_RENDER[Page Render]
+    end
+
+    subgraph "Runtime - User Interaction"
+        NAV_STATE[Nav State]
+        LIVE_EDIT[Live Editor]
+        SEARCH_INPUT[Search Input]
+    end
+
+    subgraph "External Data"
+        GITHUB_API[GitHub API]
+        ALGOLIA_API[Algolia API]
+    end
+
+    subgraph "Output"
+        DOM[DOM Update]
+        CODE_OUTPUT[Code Output]
+        SEARCH_RESULTS[Search Results]
+    end
+
+    %% Build Time Flow
+    MDX_FILES --> MDX_LOADER
+    DOCS_JSON --> NEXT_BUILD
+    MDX_LOADER --> NEXT_BUILD
+    NEXT_BUILD --> STATIC_HTML
+
+    %% Page Load Flow
+    BROWSER --> VERCEL
+    VERCEL --> STATIC_HTML
+    STATIC_HTML --> HYDRATION
+    HYDRATION --> PAGE_RENDER
+
+    %% User Interaction Flow
+    PAGE_RENDER --> NAV_STATE
+    NAV_STATE --> DOM
+
+    PAGE_RENDER --> LIVE_EDIT
+    LIVE_EDIT --> CODE_OUTPUT
+
+    PAGE_RENDER --> SEARCH_INPUT
+    SEARCH_INPUT --> ALGOLIA_API
+    ALGOLIA_API --> SEARCH_RESULTS
+
+    %% External Data Flow
+    GITHUB_API --> PAGE_RENDER
+
+    classDef build fill:#ffd,stroke:#333
+    classDef runtime fill:#dff,stroke:#333
+    classDef external fill:#fdf,stroke:#333
+    classDef output fill:#dfd,stroke:#333
+
+    class MDX_FILES,DOCS_JSON,MDX_LOADER,NEXT_BUILD,STATIC_HTML build
+    class BROWSER,VERCEL,HYDRATION,PAGE_RENDER,NAV_STATE,LIVE_EDIT,SEARCH_INPUT runtime
+    class GITHUB_API,ALGOLIA_API external
+    class DOM,CODE_OUTPUT,SEARCH_RESULTS output

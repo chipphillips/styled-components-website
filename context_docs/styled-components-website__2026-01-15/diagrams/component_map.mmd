@@ -1,0 +1,119 @@
+%% Component Hierarchy Map
+%% styled-components-website
+
+graph TB
+    subgraph "App Shell"
+        APP[_app.tsx]
+        MDXPROVIDER[MDXProvider]
+        GLOBALSTYLES[GlobalStyles]
+    end
+
+    subgraph "Layout Layer"
+        DOCSLAYOUT[DocsLayout]
+        CONTAINER[Container]
+        CONTENT[Content]
+    end
+
+    subgraph "Navigation System"
+        NAV[Nav]
+        NAVBAR[Navbar]
+        MOBILENAVBAR[MobileNavbar]
+        SIDEBAR[Sidebar]
+        SIDEBARMENUS[SidebarMenus]
+        LOGO[Logo]
+        NAVLINKS[NavLinks]
+        NAVBUTTON[NavButton]
+        NAVSEPARATOR[NavSeparator]
+        SEARCHALGOLIA[SearchWithAlgolia]
+        SOCIAL[Social]
+    end
+
+    subgraph "Content Components"
+        TITLE[Title]
+        HEADER[Header]
+        SUBHEADER[SubHeader]
+        CODEBLOCK[CodeBlock]
+        CODE[Code]
+        LIVEEDIT[LiveEdit]
+        NOTE[Note]
+        TABLE[Table]
+        ANCHOR[Anchor]
+    end
+
+    subgraph "Marketing Components"
+        COMPANYLOGOS[CompanyLogos]
+        SMALLSHOWCASE[SmallShowcase]
+        USERSLOGOS[UsersLogos]
+        SLIDER[Slider Components]
+    end
+
+    subgraph "Utility Components"
+        SEOHEAD[SeoHead]
+        LINK[Link]
+        IMAGE[Image]
+        LOADING[Loading]
+        VISUALLYHIDDEN[VisuallyHidden]
+        FOOTER[Footer]
+    end
+
+    %% App Shell Hierarchy
+    APP --> MDXPROVIDER
+    APP --> GLOBALSTYLES
+
+    %% Layout Hierarchy
+    MDXPROVIDER --> DOCSLAYOUT
+    DOCSLAYOUT --> NAV
+    DOCSLAYOUT --> CONTAINER
+    CONTAINER --> CONTENT
+
+    %% Navigation Hierarchy
+    NAV --> NAVBAR
+    NAV --> MOBILENAVBAR
+    NAV --> SIDEBAR
+    NAVBAR --> LOGO
+    NAVBAR --> NAVLINKS
+    NAVBAR --> SEARCHALGOLIA
+    NAVBAR --> SOCIAL
+    MOBILENAVBAR --> NAVBUTTON
+    SIDEBAR --> SIDEBARMENUS
+    NAVLINKS --> NAVSEPARATOR
+
+    %% Content in Layout
+    CONTENT --> TITLE
+    CONTENT --> HEADER
+    CONTENT --> SUBHEADER
+
+    %% MDX Components
+    MDXPROVIDER --> CODEBLOCK
+    MDXPROVIDER --> CODE
+    MDXPROVIDER --> LIVEEDIT
+    MDXPROVIDER --> NOTE
+    MDXPROVIDER --> TABLE
+    MDXPROVIDER --> ANCHOR
+    MDXPROVIDER --> LINK
+
+    %% Marketing in Homepage
+    CONTENT --> COMPANYLOGOS
+    CONTENT --> SMALLSHOWCASE
+    CONTENT --> USERSLOGOS
+    CONTENT --> SLIDER
+
+    %% Utilities
+    DOCSLAYOUT --> SEOHEAD
+    CONTENT --> IMAGE
+    CONTENT --> FOOTER
+    NAV --> VISUALLYHIDDEN
+
+    classDef shell fill:#ffd,stroke:#333
+    classDef layout fill:#dff,stroke:#333
+    classDef nav fill:#dfd,stroke:#333
+    classDef content fill:#fdf,stroke:#333
+    classDef marketing fill:#fdd,stroke:#333
+    classDef utility fill:#ddd,stroke:#333
+
+    class APP,MDXPROVIDER,GLOBALSTYLES shell
+    class DOCSLAYOUT,CONTAINER,CONTENT layout
+    class NAV,NAVBAR,MOBILENAVBAR,SIDEBAR,SIDEBARMENUS,LOGO,NAVLINKS,NAVBUTTON,NAVSEPARATOR,SEARCHALGOLIA,SOCIAL nav
+    class TITLE,HEADER,SUBHEADER,CODEBLOCK,CODE,LIVEEDIT,NOTE,TABLE,ANCHOR content
+    class COMPANYLOGOS,SMALLSHOWCASE,USERSLOGOS,SLIDER marketing
+    class SEOHEAD,LINK,IMAGE,LOADING,VISUALLYHIDDEN,FOOTER utility

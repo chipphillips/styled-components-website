@@ -1,0 +1,109 @@
+%% User Flows Diagram
+%% styled-components-website
+
+flowchart TD
+    subgraph "Entry Points"
+        DIRECT[Direct URL]
+        SEARCH_ENGINE[Search Engine]
+        GITHUB_LINK[GitHub Link]
+    end
+
+    subgraph "Landing"
+        HOME[Homepage]
+    end
+
+    subgraph "Primary Flows"
+        subgraph "Documentation Flow"
+            DOCS_LAND[Docs Landing]
+            BASICS[Basics Guide]
+            ADVANCED[Advanced Guide]
+            API_REF[API Reference]
+            TOOLING[Tooling Guide]
+            FAQS[FAQs]
+        end
+
+        subgraph "Discovery Flow"
+            SHOWCASE[Showcase]
+            ECOSYSTEM[Ecosystem]
+            RELEASES[Releases]
+        end
+
+        subgraph "Interactive Flow"
+            LIVE_DEMO[Live Code Demo]
+            CODE_EDIT[Edit Code]
+            SEE_RESULT[See Result]
+        end
+
+        subgraph "Search Flow"
+            SEARCH_OPEN[Open Search]
+            SEARCH_QUERY[Enter Query]
+            SEARCH_RESULT[View Results]
+            NAVIGATE_DOC[Navigate to Doc]
+        end
+    end
+
+    subgraph "Exit Points"
+        GITHUB[GitHub Repo]
+        NPM[npm Package]
+        EXTERNAL_PROJECTS[External Projects]
+    end
+
+    %% Entry to Landing
+    DIRECT --> HOME
+    SEARCH_ENGINE --> HOME
+    SEARCH_ENGINE --> DOCS_LAND
+    GITHUB_LINK --> HOME
+
+    %% From Homepage
+    HOME --> DOCS_LAND
+    HOME --> SHOWCASE
+    HOME --> LIVE_DEMO
+
+    %% Documentation Navigation
+    DOCS_LAND --> BASICS
+    DOCS_LAND --> ADVANCED
+    DOCS_LAND --> API_REF
+    DOCS_LAND --> TOOLING
+    DOCS_LAND --> FAQS
+
+    %% Cross-navigation
+    BASICS --> ADVANCED
+    ADVANCED --> API_REF
+    API_REF --> TOOLING
+
+    %% Discovery Navigation
+    HOME --> ECOSYSTEM
+    HOME --> RELEASES
+    SHOWCASE --> EXTERNAL_PROJECTS
+
+    %% Live Demo Flow
+    LIVE_DEMO --> CODE_EDIT
+    CODE_EDIT --> SEE_RESULT
+    SEE_RESULT --> CODE_EDIT
+
+    %% Search Flow
+    HOME --> SEARCH_OPEN
+    DOCS_LAND --> SEARCH_OPEN
+    SEARCH_OPEN --> SEARCH_QUERY
+    SEARCH_QUERY --> SEARCH_RESULT
+    SEARCH_RESULT --> NAVIGATE_DOC
+    NAVIGATE_DOC --> BASICS
+    NAVIGATE_DOC --> ADVANCED
+    NAVIGATE_DOC --> API_REF
+
+    %% Exits
+    RELEASES --> GITHUB
+    API_REF --> NPM
+    ECOSYSTEM --> GITHUB
+
+    classDef entry fill:#ffd,stroke:#333
+    classDef landing fill:#dff,stroke:#333
+    classDef docs fill:#dfd,stroke:#333
+    classDef exit fill:#fdf,stroke:#333
+    classDef interactive fill:#fdd,stroke:#333
+
+    class DIRECT,SEARCH_ENGINE,GITHUB_LINK entry
+    class HOME landing
+    class DOCS_LAND,BASICS,ADVANCED,API_REF,TOOLING,FAQS docs
+    class GITHUB,NPM,EXTERNAL_PROJECTS exit
+    class LIVE_DEMO,CODE_EDIT,SEE_RESULT interactive
