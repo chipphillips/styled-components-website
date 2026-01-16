@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DocsConfig",
+  "description": "Schema for pages/docs.json navigation structure",
+  "type": "object",
+  "required": ["pages"],
+  "properties": {
+    "pages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/DocsPage"
+      }
+    }
+  },
+  "definitions": {
+    "DocsPage": {
+      "type": "object",
+      "required": ["title", "pathname", "sections"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Display title for the page"
+        },
+        "pathname": {
+          "type": "string",
+          "description": "URL path segment"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DocsSection"
+          }
+        }
+      }
+    },
+    "DocsSection": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Display title for the section"
+        },
+        "pathname": {
+          "type": "string",
+          "description": "Optional URL path segment, derived from title if not provided"
+        }
+      }
+    }
+  }
+}

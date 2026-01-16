@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Label renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   display: inline-block;
   background: rgb(33, 33, 33);
   color: white;
@@ -13,12 +14,14 @@ exports[`Label renders correctly 1`] = `
 }
 
 <small
-  className="c0"
-/>
+    class="c0"
+  />
+</DocumentFragment>
 `;
 
 exports[`LabelGroup renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   display: inline-block;
   margin-left: 0.5rem;
   position: relative;
@@ -26,6 +29,7 @@ exports[`LabelGroup renders correctly 1`] = `
 }
 
 <div
-  className="c0"
-/>
+    class="c0"
+  />
+</DocumentFragment>
 `;

@@ -1,0 +1,133 @@
+{
+  "version": "1.0",
+  "snapshot_date": "2026-01-15",
+  "repository": {
+    "name": "styled-components-website",
+    "slug": "chipphillips/styled-components-website",
+    "commit_hash": "861629901e7ae1e032f8124e7d0d94125f726db7",
+    "commit_date": "2024-06-06",
+    "commit_author": "Hiroki Fujita",
+    "branch": "claude/repo-context-snapshot-R4dTR"
+  },
+  "stack": {
+    "detected": true,
+    "primary_language": "TypeScript",
+    "framework": "Next.js",
+    "framework_version": "12.3.4",
+    "ui_library": "React",
+    "ui_library_version": "17.0.2",
+    "styling": "styled-components",
+    "styling_version": "6.0.0",
+    "build_tool": "Next.js (Webpack)",
+    "package_manager": "Yarn 3.5.0",
+    "testing": "Jest + Enzyme",
+    "deployment": "Vercel"
+  },
+  "artifacts": {
+    "index": "INDEX.md",
+    "instructions": "INSTRUCTIONS.md",
+    "repo_inventory": {
+      "tree": "repo_inventory/repo_tree.md",
+      "scripts": "repo_inventory/scripts_and_commands.md",
+      "env_config": "repo_inventory/env_and_config.md",
+      "dependencies": "repo_inventory/dependencies.md",
+      "stack_detection": "repo_inventory/stack_detection.md"
+    },
+    "docs": {
+      "docs_map": "docs/docs_map.md",
+      "feature_matrix": "docs/feature_matrix.md",
+      "adr_decisions": "docs/adr_or_decisions.md"
+    },
+    "architecture": {
+      "overview": "architecture/architecture_overview.md",
+      "module_boundaries": "architecture/module_boundaries.md",
+      "dependency_notes": "architecture/dependency_notes.md",
+      "data_flow": "architecture/data_flow_overview.md"
+    },
+    "data_models": {
+      "overview": "data_models/data_model_overview.md",
+      "entities": "data_models/entities_and_fields.md",
+      "schemas": "data_models/schemas/",
+      "contracts": "data_models/contracts/"
+    },
+    "ui_ux": {
+      "overview": "ui_ux/ui_overview.md",
+      "routes": "ui_ux/routes_and_views.md",
+      "components": "ui_ux/component_inventory.md",
+      "design_system": "ui_ux/design_system_audit.md"
+    },
+    "diagrams": {
+      "erd": "diagrams/erd.mmd",
+      "data_flow": "diagrams/data_flow.mmd",
+      "user_flows": "diagrams/user_flows.mmd",
+      "architecture": "diagrams/architecture.mmd",
+      "component_map": "diagrams/component_map.mmd"
+    },
+    "quality_audit": {
+      "overview": "quality_audit/quality_overview.md",
+      "testing": "quality_audit/testing_audit.md",
+      "lint_format": "quality_audit/lint_format_audit.md",
+      "ci_cd": "quality_audit/ci_cd_audit.md",
+      "security": "quality_audit/security_notes.md",
+      "performance": "quality_audit/performance_notes.md",
+      "best_practices": "quality_audit/best_practices_by_stack.md"
+    },
+    "sprint_plan": {
+      "overview": "sprint_plan/sprint_overview.md",
+      "backlog": "sprint_plan/backlog_dependency_order.md",
+      "tickets": "sprint_plan/tickets/"
+    },
+    "logs": {
+      "command_log": "logs/command_log.md",
+      "evidence_log": "logs/evidence_log.md"
+    }
+  },
+  "status": {
+    "completion": "complete",
+    "last_updated": "2026-01-15",
+    "sections_complete": [
+      "repo_inventory",
+      "stack_detection",
+      "docs_features",
+      "architecture",
+      "data_models",
+      "ui_ux",
+      "diagrams",
+      "quality_audit",
+      "sprint_plan"
+    ],
+    "sections_pending": []
+  },
+  "health_summary": {
+    "overall_score": "6.5/10",
+    "status": "Functional with Technical Debt",
+    "risks": [
+      "Enzyme testing library deprecated - blocks React 18",
+      "Outdated dependencies (Next.js 12, React 17)",
+      "Legacy @zeit packages need removal",
+      "Missing ESLint configuration",
+      "CI/CD lacks build verification"
+    ],
+    "recommendations": [
+      "Remove deprecated @zeit packages",
+      "Add build step to CI",
+      "Add ESLint configuration",
+      "Migrate from Enzyme to React Testing Library",
+      "Upgrade to React 18 after testing migration"
+    ],
+    "next_actions": [
+      "TICKET-001: Remove @zeit packages",
+      "TICKET-002: Add build to CI",
+      "TICKET-003: Add ESLint"
+    ]
+  },
+  "key_paths": {
+    "entry_point": "pages/index.tsx",
+    "app_shell": "pages/_app.tsx",
+    "docs_config": "pages/docs.json",
+    "components": "components/",
+    "documentation": "sections/",
+    "utilities": "utils/",
+    "tests": "test/"
+  }
+}

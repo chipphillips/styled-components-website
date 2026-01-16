@@ -1,0 +1,7 @@
+node_modules/
+.next/
+out/
+coverage/
+*.d.ts
+.yarn/
+context_docs/

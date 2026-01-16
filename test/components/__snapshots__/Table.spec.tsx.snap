@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Table renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   width: 100%;
   text-align: left;
   margin: 2.2222222222222223rem 0;
@@ -34,28 +35,29 @@ exports[`Table renders correctly 1`] = `
 }
 
 <table
-  className="c0"
->
-  <thead
-    className="c1"
+    class="c0"
   >
-    <tr>
-      <th
-        className="c2 c3"
-        title="head"
-      >
-        head
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      className="c4"
+    <thead
+      class="c1"
     >
-      <th
-        className="c2"
-      />
-    </tr>
-  </tbody>
-</table>
+      <tr>
+        <th
+          class="c2 c3"
+          title="head"
+        >
+          head
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        class="c4"
+      >
+        <th
+          class="c2"
+        />
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
 `;

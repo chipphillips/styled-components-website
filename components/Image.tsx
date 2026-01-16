@@ -1,15 +1,63 @@
 import * as CSS from 'csstype';
+import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import styled from 'styled-components';
+
+/**
+ * Props for the OptimizedImage component - a simple wrapper around next/image
+ */
+export interface OptimizedImageProps extends Partial<NextImageProps> {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+/**
+ * Optimized image component using Next.js Image for automatic lazy loading,
+ * responsive images, and format optimization (WebP/AVIF).
+ */
+export function OptimizedImage({
+  src,
+  alt,
+  width = 800,
+  height = 600,
+  ...props
+}: OptimizedImageProps) {
+  return (
+    <NextImage
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading="lazy"
+      placeholder="empty"
+      {...props}
+    />
+  );
+}
+
 
 export interface ImageProps {
   caption?: string;
   captionSpacing?: number;
   height: number;
   margin?: number;
-  renderImage: (props: Pick<ImageProps, 'src' | 'video'>) => React.ReactNode;
+  /**
+   * Custom render function for the image. If not provided, uses Next.js Image
+   * with automatic optimization and lazy loading.
+   */
+  renderImage?: (props: Pick<ImageProps, 'src' | 'video'>) => React.ReactNode;
   src: string;
   video?: boolean;
   width: number;
+  /**
+   * Alt text for the image. Required for accessibility when not using renderImage.
+   */
+  alt?: string;
+  /**
+   * Priority loading - set to true for above-the-fold images
+   */
+  priority?: boolean;
 }
 
 export default function Image({
@@ -19,14 +67,37 @@ export default function Image({
   margin = 40,
   renderImage,
   width,
+  alt = '',
+  priority = false,
   ...rest
 }: ImageProps) {
   const aspectRatio = String((height / width) * 100) + '%';
 
+  // Render content based on whether renderImage is provided
+  const renderContent = () => {
+    // If renderImage is provided, use custom rendering (for animations, etc.)
+    if (renderImage) {
+      return renderImage(rest);
+    }
+
+    // Default: use Next.js Image with optimization and lazy loading
+    return (
+      <NextImage
+        src={rest.src}
+        alt={alt}
+        layout="fill"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+        loading={priority ? 'eager' : 'lazy'}
+        priority={priority}
+        objectFit="cover"
+      />
+    );
+  };
+
   return (
     <Figure $margin={margin}>
       <Main $width={width}>
-        <ImageWrapper $aspectRatio={aspectRatio}>{renderImage && renderImage(rest)}</ImageWrapper>
+        <ImageWrapper $aspectRatio={aspectRatio}>{renderContent()}</ImageWrapper>
 
         {caption && <Caption $captionSpacing={captionSpacing}>{caption}</Caption>}
       </Main>
@@ -34,7 +105,7 @@ export default function Image({
   );
 }
 
-export interface VideoProps extends ImageProps {}
+export type VideoProps = ImageProps;
 
 export const Video = (props: VideoProps) => <Image {...props} video />;
 

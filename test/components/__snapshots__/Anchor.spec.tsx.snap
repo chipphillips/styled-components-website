@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Anchor renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   font-size: 1.7777777777777777rem;
   font-weight: 600;
   font-family: "Karla",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -57,21 +58,20 @@ exports[`Anchor renders correctly 1`] = `
 }
 
 <h2
-  className="c0 c1"
->
-  <div
-    aria-hidden={true}
-    className="c2"
-  />
-  <a
-    className="c3 c4"
-    href="#undefined"
+    class="c0 c1"
   >
-    <svg
-      className="c5"
-      height={null}
-      width={null}
+    <div
+      aria-hidden="true"
+      class="c2"
     />
-  </a>
-</h2>
+    <a
+      class="c3 c4"
+      href="#undefined"
+    >
+      <svg
+        class="c5"
+      />
+    </a>
+  </h2>
+</DocumentFragment>
 `;

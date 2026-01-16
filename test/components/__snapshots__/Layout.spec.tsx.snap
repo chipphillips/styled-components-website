@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Container renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   padding-left: 16.666666666666668rem;
 }
 
@@ -12,12 +13,14 @@ exports[`Container renders correctly 1`] = `
 }
 
 <div
-  className="c0"
-/>
+    class="c0"
+  />
+</DocumentFragment>
 `;
 
 exports[`Content renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   box-sizing: border-box;
   font-family: "Karla",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   margin: 0 auto;
@@ -34,12 +37,14 @@ exports[`Content renders correctly 1`] = `
 }
 
 <div
-  className="c0"
-/>
+    class="c0"
+  />
+</DocumentFragment>
 `;
 
 exports[`Header renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   font-size: 1.7777777777777777rem;
   font-weight: 600;
   font-family: "Karla",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -51,12 +56,14 @@ exports[`Header renders correctly 1`] = `
 }
 
 <h2
-  className="c0"
-/>
+    class="c0"
+  />
+</DocumentFragment>
 `;
 
 exports[`SubHeader renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   margin: 2em 0 1em;
   font-size: 1.3333333333333333rem;
   font-weight: 600;
@@ -68,12 +75,14 @@ exports[`SubHeader renders correctly 1`] = `
 }
 
 <h3
-  className="c0"
-/>
+    class="c0"
+  />
+</DocumentFragment>
 `;
 
 exports[`Title renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   text-align: left;
   width: 100%;
   color: rgb(66, 66, 66);
@@ -87,6 +96,7 @@ exports[`Title renders correctly 1`] = `
 }
 
 <h1
-  className="c0"
-/>
+    class="c0"
+  />
+</DocumentFragment>
 `;

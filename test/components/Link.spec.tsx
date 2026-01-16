@@ -1,20 +1,21 @@
-import renderer from 'react-test-renderer';
+import React from 'react';
+import { render } from '@testing-library/react';
 import Link, { InlineLink, StyledLink } from '../../components/Link';
 
 test('Link renders correctly', () => {
-  const tree = renderer.create(<Link href="/" target="_blank" />).toJSON();
+  const { asFragment } = render(<Link href="/" target="_blank" />);
 
-  expect(tree).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('StyledLink renders correctly', () => {
-  const tree = renderer.create(<StyledLink href="/" />).toJSON();
+  const { asFragment } = render(<StyledLink href="/" />);
 
-  expect(tree).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });
 
 test('InlineLink renders correctly', () => {
-  const tree = renderer.create(<InlineLink href="/" />).toJSON();
+  const { asFragment } = render(<InlineLink href="/" />);
 
-  expect(tree).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 });

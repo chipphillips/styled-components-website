@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Social renders correctly 1`] = `
+.c0 {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.c1 {
+  display: flex;
+  margin-right: 1.1111111111111112rem;
+  line-height: 3.3333333333333335rem;
+  transition: opacity 0.2s,transform 0.2s;
+  cursor: pointer;
+}
+
+.c1:last-child {
+  margin-right: 0;
+}
+
+.c1:hover,
+.c1:focus {
+  opacity: 0.8;
+}
+
+.c1:active {
+  transform: scale(0.95);
+  opacity: 0.6;
+}
+
+.c1 svg path {
+  fill: currentColor;
+}
+
+.c2.c2 {
+  width: NaNrem;
+  height: 1rem;
+}
+
+<div>
+  <nav
+    class="c0"
+  >
+    <a
+      class="c1"
+      target="_blank"
+      title="GitHub: Source code"
+    >
+      <svg
+        class="c2"
+      />
+    </a>
+    <a
+      class="c1"
+      target="_blank"
+      title="Medium: Announcements, blog posts, and more"
+    >
+      <svg
+        class="c2"
+      />
+    </a>
+  </nav>
+</div>
+`;

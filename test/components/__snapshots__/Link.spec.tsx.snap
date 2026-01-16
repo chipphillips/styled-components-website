@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InlineLink renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   color: rgb(33, 33, 33);
   cursor: pointer;
   text-decoration: underline;
@@ -16,15 +17,17 @@ exports[`InlineLink renders correctly 1`] = `
 }
 
 <a
-  className="c0"
-  href="/"
-  rel="noopener"
-  target="_blank"
-/>
+    class="c0"
+    href="/"
+    rel="noopener"
+    target="_blank"
+  />
+</DocumentFragment>
 `;
 
 exports[`Link renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   display: inline-block;
   color: inherit;
   cursor: pointer;
@@ -43,13 +46,15 @@ exports[`Link renders correctly 1`] = `
 }
 
 <a
-  className="c0"
-  target="_blank"
-/>
+    class="c0"
+    target="_blank"
+  />
+</DocumentFragment>
 `;
 
 exports[`StyledLink renders correctly 1`] = `
-.c0 {
+<DocumentFragment>
+  .c0 {
   display: inline-block;
   color: inherit;
   cursor: pointer;
@@ -68,7 +73,8 @@ exports[`StyledLink renders correctly 1`] = `
 }
 
 <a
-  className="c0"
-  href="/"
-/>
+    class="c0"
+    href="/"
+  />
+</DocumentFragment>
 `;

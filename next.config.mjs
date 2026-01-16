@@ -1,6 +1,5 @@
 import withMDX from '@next/mdx';
-import withSourceMaps from '@zeit/next-source-maps';
-import remarkPlugin from 'remark-gfm'
+import remarkPlugin from 'remark-gfm';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 export default withMDX({
@@ -9,31 +8,43 @@ export default withMDX({
   options: {
     remarkPlugins: [remarkPlugin],
   },
-})(
-  withSourceMaps({
-    compiler: {
-      styledComponents: true,
-    },
-    pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-    poweredByHeader: false,
-    webpack: function (config, { dev, isServer }) {
-      if (dev) {
-        return config;
-      }
+})({
+  compiler: {
+    styledComponents: true,
+  },
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  poweredByHeader: false,
 
-      if (!!process.env.ANALYZE) {
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: 'disabled',
-            // For all options see https://github.com/th0r/webpack-bundle-analyzer#as-plugin
-            generateStatsFile: true,
-            // Will be available at `.next/stats.json`
-            statsFilename: 'stats.json',
-          })
-        );
-      }
+  // Image optimization configuration
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
 
+  // Bundle optimization
+  swcMinify: true,
+
+  // Experimental features for better performance
+  experimental: {
+    optimizePackageImports: ['@styled-icons/boxicons-regular', '@styled-icons/fa-brands', '@styled-icons/material'],
+  },
+
+  webpack: function (config, { dev, isServer }) {
+    if (dev) {
       return config;
-    },
-  })
-);
+    }
+
+    if (!!process.env.ANALYZE) {
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'disabled',
+          generateStatsFile: true,
+          statsFilename: 'stats.json',
+        })
+      );
+    }
+
+    return config;
+  },
+});
